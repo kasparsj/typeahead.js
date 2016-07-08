@@ -114,6 +114,10 @@ When initializing a typeahead, there are a number of options you can configure.
 * `highlight` – If `true`, when suggestions are rendered, pattern matches
   for the current query in text nodes will be wrapped in a `strong` element with
   its class set to `{{classNames.highlight}}`. Defaults to `false`.
+  
+* `highlightSplit` – If `true`, the search term is tokenized into words (split ty spaces).
+  This will highlight all search words regardless of their order. Works with fuzzy search type.
+  Defaults to `false`.
 
 * `hint` – If `false`, the typeahead will not show a hint. Defaults to `true`.
 

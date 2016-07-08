@@ -1,7 +1,7 @@
 /*!
  * typeahead.js 0.11.1
  * https://github.com/twitter/typeahead.js
- * Copyright 2013-2015 Twitter, Inc. and other contributors; Licensed MIT
+ * Copyright 2013-2016 Twitter, Inc. and other contributors; Licensed MIT
  */
 
 (function(root, factory) {
@@ -666,6 +666,7 @@
             }
             www.mixin(this);
             this.highlight = !!o.highlight;
+            this.highlightSplit = !!o.highlightSplit;
             this.name = o.name || nameGenerator();
             this.limit = o.limit || 5;
             this.displayFn = getDisplayFn(o.display || o.displayKey);
@@ -755,7 +756,7 @@
                 this.highlight && highlight({
                     className: this.classes.highlight,
                     node: fragment,
-                    pattern: query
+                    pattern: that.highlightSplit ? $.trim(query).split(" ") : query
                 });
                 return $(fragment);
             },
@@ -1325,6 +1326,7 @@
                     var $input, $wrapper, $hint, $menu, defaultHint, defaultMenu, eventBus, input, menu, typeahead, MenuConstructor;
                     _.each(datasets, function(d) {
                         d.highlight = !!o.highlight;
+                        d.highlightSplit = !!o.highlightSplit;
                     });
                     $input = $(this);
                     $wrapper = $(www.html.wrapper);

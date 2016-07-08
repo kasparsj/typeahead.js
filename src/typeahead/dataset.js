@@ -41,6 +41,7 @@ var Dataset = (function() {
     www.mixin(this);
 
     this.highlight = !!o.highlight;
+    this.highlightSplit = !!o.highlightSplit;
     this.name = o.name || nameGenerator();
 
     this.limit = o.limit || 5;
@@ -199,7 +200,7 @@ var Dataset = (function() {
       this.highlight && highlight({
         className: this.classes.highlight,
         node: fragment,
-        pattern: query
+        pattern: that.highlightSplit ? $.trim(query).split(' ') : query
       });
 
       return $(fragment);
