@@ -666,7 +666,7 @@
             }
             www.mixin(this);
             this.highlight = !!o.highlight;
-            this.highlightSplit = !!o.highlightSplit;
+            this.highlightPattern = o.highlightPattern;
             this.name = o.name || nameGenerator();
             this.limit = o.limit || 5;
             this.displayFn = getDisplayFn(o.display || o.displayKey);
@@ -756,7 +756,7 @@
                 this.highlight && highlight({
                     className: this.classes.highlight,
                     node: fragment,
-                    pattern: that.highlightSplit ? $.trim(query).split(" ") : query
+                    pattern: that.highlightPattern ? that.highlightPattern(query) : query
                 });
                 return $(fragment);
             },
@@ -1327,7 +1327,7 @@
                     var $input, $wrapper, $hint, $menu, defaultHint, defaultMenu, eventBus, input, menu, typeahead, MenuConstructor;
                     _.each(datasets, function(d) {
                         d.highlight = !!o.highlight;
-                        d.highlightSplit = !!o.highlightSplit;
+                        d.highlightPattern = o.highlightPattern;
                     });
                     $input = $(this);
                     $wrapper = $(www.html.wrapper);
