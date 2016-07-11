@@ -1721,8 +1721,9 @@
                     suggestions = suggestions || [];
                     if (!canceled && rendered < that.limit) {
                         that.cancel = $.noop;
-                        rendered += suggestions.length;
-                        that._append(query, suggestions.slice(0, that.limit - rendered));
+                        var appendices = suggestions.slice(0, that.limit - rendered);
+                        that._append(query, appendices);
+                        rendered += appendices.length;
                         that.async && that.trigger("asyncReceived", query);
                     }
                 }
